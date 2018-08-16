@@ -538,19 +538,14 @@
 
           <div class="col-lg-5 col-md-8">
             <div class="form">
-              <div id="sendmessage">Ваша заявка успешно отправлена! Спасибо!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Имя" data-rule="minlen:1" data-msg="Введите, пожалуйста, Ваше имя :)" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
-                
-                <div class="text-center"><button id="sendBtn" type="submit">Оставить заявку</button></div>
+              <form action="https://formspree.io/biv2994@mail.ru" method="POST">
+                  <label for="name" style="text-align: center; font-family: 'Lobster', serif; font-size: 20px">Имя:</label>
+                  <input type="text" class="form-control" style="border-radius: 5px" name="name">
+                  <br>
+                  <label for="email" style="font-family: 'Lobster', serif; font-size: 20px">E-mail:</label>
+                  <input type="email" class="form-control" style="border-radius: 5px" name="_replyto">
+                  <br>
+                  <input type="submit" class="btn btn-success" style="border-radius: 3px; color: white" value="Оставить заявку">
               </form>
             </div>
           </div>
@@ -602,10 +597,6 @@
   <script src="lib/lightgallery/js/lightgallery.min.js"></script>
   <script src="lib/lg-thumbnail/lg-thumbnail.min.js"></script>
 
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
 
   <script type="text/javascript">
