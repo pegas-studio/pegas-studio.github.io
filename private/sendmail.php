@@ -33,7 +33,7 @@ if (!empty($_POST['name'])) {
     $mail->isHTML(true);
 
     $mail->Subject = "Заявка от клиента";
-    $mail->Body = "Клиент $clientName оставил(a) заявку.<br> E-mail: <a href=\"mailto:$clientMail\">$clientEmail</a>";
+    $mail->Body = "Клиент $clientName оставил(a) заявку.<br> E-mail: <a href=\"mailto:$clientEmail\">$clientEmail</a>";
     $mail->AltBody = "Клиент $clientName оставил(a) заявку.\r\n E-mail: $clientEmail";
 
     if ($mail->send()) {
