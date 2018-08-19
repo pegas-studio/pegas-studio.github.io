@@ -1,53 +1,3 @@
-<?php
-#error_reporting(E_ALL);
-#ini_set("display_errors", 1);
-
-require 'phpmailer/PHPMailerAutoload.php';
-
-if (!empty($_POST['name'])) {
-    $login = 'biv2994@mail.ru';
-    $password = 'm777onopoly';
-    
-    $fromName = 'Студия «Пегас»';
-    $subject = "Заявка от клиента";
-
-    $clientName = $_POST['name'];
-    $clientEmail = $_POST['email'];
-
-    $mail = new PHPMailer;
-    $mail->isSMTP();
-
-    #$mail->SMTPDebug = 1;
-    $mail->Host = 'smtp.mail.ru';
-    $mail->SMTPAuth = true;
-    $mail->Username = $login;
-    $mail->Password = $password;
-    $mail->SMTPSecure = 'SSL';
-    $mail->Port = '587';
-
-    $mail->CharSet = 'UTF-8';
-    $mail->From = $login;
-    $mail->FromName = $fromName;
-    $mail->addAddress($login, $fromName);
-
-    $mail->isHTML(true);
-
-    $mail->Subject = "Заявка от клиента";
-    $mail->Body = "Клиент $clientName оставил(a) заявку.<br> E-mail: $clientEmail";
-    $mail->AltBody = "Клиент $clientName оставил(a) заявку.\r\n E-mail: $clientEmail";
-
-    if ($mail->send()) {
-        $answer = '1';
-    } else {
-        $answer = '0';
-        #echo 'Ошибка отправки письма. ';
-        #echo 'Ошибка: ' . $mail->ErrorInfo;
-    }
-    die($answer);
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +27,9 @@ if (!empty($_POST['name'])) {
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/lightgallery/css/lightgallery.css" rel="stylesheet">
   <link href="lib/slider/css/slider.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="lib/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css"/>
 
 
   <!-- Main Stylesheet File -->
@@ -490,7 +443,8 @@ if (!empty($_POST['name'])) {
               </a> 
             </div>
           </div> -->
-          <div class="slider demo" id="slider">
+
+          <!-- <div class="slider demo" id="slider">
             <div class="slider_viewport" id="review-gallery">
               <div class="slider_list">
                 <div class="slider_item">
@@ -526,6 +480,14 @@ if (!empty($_POST['name'])) {
               <div class="slider_arrow slider_arrow__right">
               </div>
             </div>
+          </div> -->
+
+          <div id="slider">
+            <div style="padding-right: 5px;"><img src="img/reviews/review1.jpg" height="320"/></div>
+            <div style="padding-right: 5px;"><img src="img/reviews/review2.jpg" height="320"/></div>
+            <div style="padding-right: 5px;"><img src="img/reviews/review3.jpg" height="320"/></div>
+            <div style="padding-right: 5px;"><img src="img/reviews/review4.jpg" height="320"/></div>
+            <div style="padding-right: 5px;"><img src="img/reviews/review5.jpg" height="320"/></div>
           </div>
 
 
@@ -667,6 +629,8 @@ if (!empty($_POST['name'])) {
   <script src="lib/scrollreveal/scrollreveal.min.js"></script>
   <script src="lib/slider/js/slider.js"></script>
 
+  <script type="text/javascript" src="lib/slick/slick.min.js"></script>
+
 
   <script src="lib/lightgallery/js/lightgallery.min.js"></script>
   <script src="lib/lg-thumbnail/lg-thumbnail.min.js"></script>
@@ -674,81 +638,118 @@ if (!empty($_POST['name'])) {
   <script src="js/main.js"></script>
 
   <script type="text/javascript">
-    window.sr = ScrollReveal({ reset: true });
-    sr.reveal('.portfolio-pic', { duration: 400 });
-    sr.reveal('.review-pic', { duration: 1000 }, 50);
-
-
-    lightGallery(document.getElementById('portfolio-gallery'));
+    $(document).ready(function() {
     
-    $('#slider').skySlider({
-      carousel: true,
-      interval: 4000,
-      duration: 1000,
-      items: 1,
-      carousel: true,
-      loop: true,
-      autoplay: true,
-      callback: function(number) {
-        //console.log('Current slideSet - ' + number);
-      }
-    });
+      window.sr = ScrollReveal({ reset: true });
+      sr.reveal('.portfolio-pic', { duration: 400 });
+      sr.reveal('.review-pic', { duration: 1000 }, 50);
 
 
+      lightGallery(document.getElementById('portfolio-gallery'));
+      
+      // $('#slider').skySlider({
+      //   carousel: true,
+      //   interval: 4000,
+      //   duration: 1000,
+      //   items: 3,
+      //   carousel: true,
+      //   loop: true,
+      //   autoplay: true,
+      //   callback: function(number) {
+      //     //console.log('Current slideSet - ' + number);
+      //   }
+      // });
 
-    $('.empty-field-warn').css('visibility', 'hidden');
-    $('#request-form').find('input').keyup(function() {
-	if( $.trim( $(this).val() ) == '' ) {
-	  //$(this).next().css('visibility', 'visible');
-        }
-        else {
-	  $(this).next().css('visibility', 'hidden');	
-	}
-    });
-    $('#request-form').submit(function(){
-      var errors = false;
+      $('#slider').slick({
+        // dots: true,
+        prevArrow: false,
+        nextArrow: false,
+        variableWidth: true,
+        
+        speed: 8000,
+              autoplay: true,
+              infinite: true,
+              autoplaySpeed: 0,
+              cssEase: 'linear',
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              pauseOnHover: true
 
-      $(this).find('span').empty();
 
-      $(this).find('input').each(function(){
-        if( $.trim( $(this).val() ) == '' ) {
-          errors = true;
-          console.log($(this).next());
-          $(this).next().css('visibility', 'visible');
-        }
+        // responsive: [
+        //   {
+        //     breakpoint: 1200,
+        //     settings: {
+        //       slidesToShow: 2,
+        //       slidesToScroll: 1
+        //     }
+        //   },
+        //   {
+        //     breakpoint: 768,
+        //     settings: {
+        //       slidesToShow: 1,
+        //       slidesToScroll: 1
+        //     }
+        //   }
+        // ]
       });
 
-      if( !errors ){
-        var data = $('#request-form').serialize();
-        $.ajax({
-          url: 'index.php',
-          type: 'POST',
-          data: data,
-          beforeSend: function(){
-            $('#client-submit').next().text('Отправляю...');
-          },
-          success: function(res){
-            if( res == 1 ) {
-              $('#request-form').find('input:not(#client-submit), textarea').val('');
-              $('#client-submit').next().empty();
-              $('#modal-message').text('Ваша заявка принята!');
-	      $("#myModal").modal('show');
-            }else{
-              $('#client-submit').next().empty();
-       	      $('#modal-message').text('Ошибка при отправлении заявки. Попробуйте ещё раз.');
-	      $("#myModal").modal('show');
-            }
-          },
-          error: function(){
-            console.log('Ошибка отправки заявки!');
+      
+
+      $('.empty-field-warn').css('visibility', 'hidden');
+      $('#request-form').find('input').keyup(function() {
+        	if( $.trim( $(this).val() ) == '' ) {
+        	  //$(this).next().css('visibility', 'visible');
+          }
+          else {
+        	  $(this).next().css('visibility', 'hidden');	
+        	}
+      });
+
+      $('#request-form').submit(function(){
+        var errors = false;
+
+        $(this).find('span').empty();
+
+        $(this).find('input').each(function(){
+          if( $.trim( $(this).val() ) == '' ) {
+            errors = true;
+            console.log($(this).next());
+            $(this).next().css('visibility', 'visible');
           }
         });
-      }
 
-      return false;
+        if( !errors ){
+          var data = $('#request-form').serialize();
+          $.ajax({
+            url: 'private/sendmail.php',
+            type: 'POST',
+            data: data,
+            beforeSend: function(){
+              $('#client-submit').next().text('Отправляю...');
+            },
+            success: function(res){
+              if( res == 1 ) {
+                $('#request-form').find('input:not(#client-submit), textarea').val('');
+                $('#client-submit').next().empty();
+                $('#modal-message').text('Ваша заявка принята!');
+  	      $("#myModal").modal('show');
+              }else{
+                $('#client-submit').next().empty();
+         	      $('#modal-message').text('Ошибка при отправлении заявки. Попробуйте ещё раз.');
+  	      $("#myModal").modal('show');
+              }
+            },
+            error: function(){
+              console.log('Ошибка отправки заявки!');
+            }
+          });
+        }
+
+        return false;
+      });
+
     });
-
-
   </script>
 </body>
 </html>
