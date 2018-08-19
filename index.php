@@ -1,3 +1,53 @@
+<?php
+#error_reporting(E_ALL);
+#ini_set("display_errors", 1);
+
+require 'phpmailer/PHPMailerAutoload.php';
+
+if (!empty($_POST['name'])) {
+    $login = 'biv2994@mail.ru';
+    $password = 'm777onopoly';
+    
+    $fromName = 'Студия «Пегас»';
+    $subject = "Заявка от клиента";
+
+    $clientName = $_POST['name'];
+    $clientEmail = $_POST['email'];
+
+    $mail = new PHPMailer;
+    $mail->isSMTP();
+
+    #$mail->SMTPDebug = 1;
+    $mail->Host = 'smtp.mail.ru';
+    $mail->SMTPAuth = true;
+    $mail->Username = $login;
+    $mail->Password = $password;
+    $mail->SMTPSecure = 'SSL';
+    $mail->Port = '587';
+
+    $mail->CharSet = 'UTF-8';
+    $mail->From = $login;
+    $mail->FromName = $fromName;
+    $mail->addAddress($login, $fromName);
+
+    $mail->isHTML(true);
+
+    $mail->Subject = "Заявка от клиента";
+    $mail->Body = "Клиент $clientName оставил(a) заявку.<br> E-mail: $clientEmail";
+    $mail->AltBody = "Клиент $clientName оставил(a) заявку.\r\n E-mail: $clientEmail";
+
+    if ($mail->send()) {
+        $answer = '1';
+    } else {
+        $answer = '0';
+        #echo 'Ошибка отправки письма. ';
+        #echo 'Ошибка: ' . $mail->ErrorInfo;
+    }
+    die($answer);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -503,7 +553,7 @@
             <div class="info">
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p><a class="location_ref" href="https://vk.com/studiapegas?w=address-30431325_4905" target="_blank">Минск, ул. Амураторская 4 - 101</a><br>Рядом ст.м. Молодежная и ст.м. Фрунзенская</p>
+                <p><a class="location_ref" href="https://vk.com/studiapegas?w=address-30431325_4905" target="_blank">Минск, ул. Амураторская 4 - 101</a><br>Рядом ст.м. Молодёжная и ст.м. Фрунзенская</p>
               </div>
 
               <div>
@@ -538,19 +588,43 @@
 
           <div class="col-lg-5 col-md-8">
             <div class="form">
-              <form action="https://formspree.io/biv2994@mail.ru" method="POST">
+              <form action="" method="post" id="request-form">
+                <div>  
                   <label for="name" style="text-align: center; font-family: 'Lobster', serif; font-size: 20px">Имя:</label>
-                  <input type="text" class="form-control" style="border-radius: 5px" name="name">
-                  <br>
+                  <input id="client-name" type="text" class="form-control" style="border-radius: 5px" name="name">
+		  <div class="empty-field-warn">
+                    <div style="font-family: 'Lobster'; color: #FA58AC">Введите, пожалуйста, своё имя</div>
+                  </div>
+                </div>
+                <div>
                   <label for="email" style="font-family: 'Lobster', serif; font-size: 20px">E-mail:</label>
-                  <input type="email" class="form-control" style="border-radius: 5px" name="_replyto">
-                  <br>
-                  <input type="submit" class="btn btn-success" style="border-radius: 3px; color: white" value="Оставить заявку">
+                  <input id="client-email" type="email" class="form-control" style="border-radius: 5px" name="email">
+		  <div class="empty-field-warn">
+                    <div style="font-family: 'Lobster'; color: #FA58AC">Введите, пожалуйста, свой e-mail</div>
+                  </div>
+                </div>
+		<br>
+		<div align="center">
+                	<input id="client-submit" type="submit" class="btn btn-success" style="border-radius: 3px; color: white; font-size: 20px;" value="Оставить заявку">
+		</div>
               </form>
             </div>
           </div>
 
-        </div>
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
+	    <div class="vertical-alignment-helper">
+		<div class="modal-dialog vertical-align-center">
+		    <div class="modal-content" align="center" style="background-color: #E6E6E6">
+<div style="width: 70px; height: 70px; background-color: black; border-radius: 50%; margin-top: 15px;">
+<img src="img/logo_min.png" alt="" title="" height="60" style="margin-top: 5px">
+</div>		        
+<div id="modal-message" class="modal-body" align="center" style="font-family: 'Bad Script', serif; font-size: 30px; font-weight: 500"></div>
+<button data-dismiss="modal" class="btn btn btn-outline-success" style="font-family: 'Bad Script'; font-size: 20px; width: 90px; height: 40px; margin-bottom: 15px; text-align:center; ">OK</button>
+		    </div>
+		</div>
+	    </div>
+	</div>
 
       </div>
     </section><!-- #contact -->
@@ -619,6 +693,61 @@
         //console.log('Current slideSet - ' + number);
       }
     });
+
+
+
+    $('.empty-field-warn').css('visibility', 'hidden');
+    $('#request-form').find('input').keyup(function() {
+	if( $.trim( $(this).val() ) == '' ) {
+	  //$(this).next().css('visibility', 'visible');
+        }
+        else {
+	  $(this).next().css('visibility', 'hidden');	
+	}
+    });
+    $('#request-form').submit(function(){
+      var errors = false;
+
+      $(this).find('span').empty();
+
+      $(this).find('input').each(function(){
+        if( $.trim( $(this).val() ) == '' ) {
+          errors = true;
+          console.log($(this).next());
+          $(this).next().css('visibility', 'visible');
+        }
+      });
+
+      if( !errors ){
+        var data = $('#request-form').serialize();
+        $.ajax({
+          url: 'index.php',
+          type: 'POST',
+          data: data,
+          beforeSend: function(){
+            $('#client-submit').next().text('Отправляю...');
+          },
+          success: function(res){
+            if( res == 1 ) {
+              $('#request-form').find('input:not(#client-submit), textarea').val('');
+              $('#client-submit').next().empty();
+              $('#modal-message').text('Ваша заявка принята!');
+	      $("#myModal").modal('show');
+            }else{
+              $('#client-submit').next().empty();
+       	      $('#modal-message').text('Ошибка при отправлении заявки. Попробуйте ещё раз.');
+	      $("#myModal").modal('show');
+            }
+          },
+          error: function(){
+            console.log('Ошибка отправки заявки!');
+          }
+        });
+      }
+
+      return false;
+    });
+
 
   </script>
 </body>
