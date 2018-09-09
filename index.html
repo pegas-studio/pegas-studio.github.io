@@ -7,11 +7,9 @@
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <!-- Favicons -->
   <link href="img/favicon.ico" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
@@ -19,21 +17,183 @@
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
 
-  <!-- Bootstrap CSS File -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/lightgallery/css/lightgallery.css" rel="stylesheet">
   <link href="lib/slider/css/slider.css" rel="stylesheet">
+  <link href="lib/plyr/css/plyr.css" rel="stylesheet">
+  <link href="lib/slick/slick.css" rel="stylesheet" type="text/css" />
+  <link href="lib/slick/slick-theme.css" rel="stylesheet" type="text/css" />
 
-  <link rel="stylesheet" type="text/css" href="lib/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css"/>
-
-
-  <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    @font-face {
+        font-family: mainFont;
+        src: url(10112.otf) format("opentype");
+        font-variant: small-caps;
+        font-weight: 300;
+    }
+    @font-face {
+        font-family: mainFont;
+        src: url(10112.otf) format("opentype");
+        font-variant: small-caps;
+    }
+
+    @font-face {
+        font-family: logoFont;
+        src: url(8343.otf) format("opentype");
+        font-variant: small-caps;
+        font-weight: 300;
+    }
+    @font-face {
+        font-family: logoFont;
+        src: url(8343.otf) format("opentype");
+        font-variant: small-caps;
+    }
+
+    @font-face {
+        font-family: studioTitleFont;
+        src: url(11958.otf) format("opentype");
+        font-variant: small-caps;
+        font-weight: 300;
+    }
+    @font-face {
+        font-family: studioTitleFont;
+        src: url(11958.otf) format("opentype");
+        font-variant: small-caps;
+    }
+
+    @font-face {
+        font-family: studioContentFont;
+        src: url(11514.ttf) format("truetype");
+        font-variant: small-caps;
+        font-weight: 300;
+    }
+    @font-face {
+        font-family: studioContentFont;
+        src: url(11514.ttf) format("truetype");
+        font-variant: small-caps;
+    }
+
+
+    @keyframes crescendo {
+      0%   {transform: scale(.8);}
+      100% {transform: scale(.9);}
+    }
+
+
+    .pulse {
+      display: inline-block;
+      color: white !important;
+      font-size: 6vmin;
+      /*padding-top: 1.2vmin;*/
+      width: 50vmin;
+      height: 12vmin;
+      border-radius: 40px !important;
+      border: 2px solid transparent !important;
+      background-color: #DF0174;
+      cursor: pointer;
+      box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+
+      animation: pulse 1.6s infinite, crescendo 0.8s alternate infinite ease-in;
+
+      -webkit-transition: background-color 1s ease-out, color 1s ease-out;
+      -moz-transition: background-color 1s ease-out, color 1s ease-out;
+      -o-transition: background-color 1s ease-out, color 1s ease-out;
+      transition: background-color 1s ease-out, color 1s ease-out;
+    }
+
+    .pulse:hover {
+      background-color: transparent;
+      color: #DF0174 !important;
+      border: 2px solid #DF0174 !important;
+    }
+
+    @-webkit-keyframes pulse {
+      0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+      }
+      70% {
+          -webkit-box-shadow: 0 0 0 40px rgba(204,169,44, 0);
+      }
+      100% {
+          -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+      }
+    }
+    @keyframes pulse {
+      0% {
+        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+      }
+      70% {
+          -moz-box-shadow: 0 0 0 40px rgba(204,169,44, 0);
+          box-shadow: 0 0 0 40px rgba(204,169,44, 0);
+      }
+      100% {
+          -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+          box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+      }
+    }
+
+    #back {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -100;
+    }
+
+    #header-icons {
+      display: inline-block; 
+      height: 100px; 
+      margin-left: 50px; 
+      padding-top: 30px;
+    }
+
+    .header_instagram, .header_vk {
+      color: white !important;
+      font-size: 27px;
+
+      -webkit-transition: color 1s ease-out;
+      -moz-transition: color 1s ease-out;
+      -o-transition: color 1s ease-out;
+      transition: color 1s ease-out;
+    }
+
+    .header_instagram:hover, .header_vk:hover {
+      color: #DF0174 !important;
+    }
+
+    #header-icons-mobile {
+      padding-left: 15px;
+      padding-top: 10px;
+    }
+
+    @media (max-width: 400px) {
+      #header-icons {
+        display: none;
+      }
+    }
+
+    @media (min-width: 992px) {
+      #header-icons-mobile {
+        display: none;
+      }
+    }
+
+    .plyr-main-container {
+      max-width: 700px;
+      max-height: 60vh;
+      margin: 0 auto;
+    }
+    .plyr {
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
 
 <body>
@@ -42,9 +202,17 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#pegas-main"><img src="img/logo_min.png" alt="" title="" height="100" /></img></a>
-        <!-- Uncomment below if you prefer to use a text logo -->
-        <!--<h1><a href="#pegas-main">Regna</a></h1>-->
+        <a href="#pegas-main" style="font-family: logoFont; color: white; font-size: 20px">studia<img src="img/logo_min.png" alt="" title="" height="100" /></img> pegas</a>
+      </div>
+
+      <div id="header-icons">
+        <a class="instagram_ref header_instagram" href="https://www.instagram.com/studia_pegas/" target="_blank">
+          <i class="fa fa-instagram"></i>
+        </a>
+
+        <a class="vk_ref header_vk" href="https://vk.com/studiapegas" target="_blank" style="margin-left: 4px">
+          <i class="fa fa-vk"></i>
+        </a>
       </div>
 
       <nav id="nav-container" style="margin-top: 37px">
@@ -56,18 +224,35 @@
           <li><a href="#review">ОТЗЫВЫ</a></li>
           <li><a href="#contact">КОНТАКТЫ</a></li>          
         </ul>
-      </nav><!-- #nav-container -->
+
+        <div id="header-icons-mobile">
+          <a class="instagram_ref header_instagram" href="https://www.instagram.com/studia_pegas/" target="_blank">
+            <i class="fa fa-instagram"></i>
+          </a>
+
+          <a class="vk_ref header_vk" href="https://vk.com/studiapegas" target="_blank" style="margin-left: 4px">
+            <i class="fa fa-vk"></i>
+          </a>
+        </div>
+      </nav>
     </div>
-  </header><!-- #header -->
+  </header>
 
   
   <section id="pegas-main">
+    <div id="back"></div>
     <div class="pegas-main-container">
-      <h1 style="color: black; opacity: 1; font-family: 'Bad Script', cursive;" class="pegas-font">Студия идеальных бровей</h1>
-      <h2 style="color: black; opacity: 1; font-family: 'Lobster', cursive;">СТУДИЯ «ПЕГАС»</h2>
-      <!-- <a href="#about" class="btn-get-started">Get Started</a> -->
+      <p style="color: black; font-family: logoFont, serif; font-size: 10vmin; letter-spacing: 6px; margin-top: 100px" class="pegas-font">Студия идеальных бровей</p>
+      <div class="plyr-main-container">
+        <video controls crossorigin playsinline id="player">
+          <source src="videos/main.mp4" type="video/mp4" size="720">
+        </video>
+      </div>
+      <div style="margin-top: 20px">
+        <a href="#contact" class="pulse" style="padding-top: 1.2vmin">Записаться</a>
+      </div>
     </div>
-  </section><!-- #pegas-main -->
+  </section>
 
   <main id="main">
 
@@ -75,49 +260,34 @@
     <section id="about">
       <div class="container wow fadeInUp">
         <div class="section-header">
-          <h3 class="section-title" style="font-family: 'Lobster', cursive;">О студии</h3>
-          <!-- <p class="section-description" style="color: #02061C; font-weight: 500">Мастера</p> -->
+          <h3 class="section-title" style="font-family: studioTitleFont;">О студии</h3>
         </div>
         
         <div>
-          <!-- <div class="wow fadeInUp" style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <div style="padding-right: 100px; padding-bottom: 40px">
-              <img src="img/about/trener1.jpg" height="500">
-            </div>
-            <div style="width: 50%">
-              <h2 style="font-family: 'Bad Script', serif; color: black; font-weight: 700; font-size: 35px">
-                Юлиана Лукашевич
-              </h2>
-              <div style="font-family: 'Tinos', serif; font-size: 22px">
-                <p>Одна из первых мастеров-бровистов, успешно практикующая и развивающая направление по восстановлению и моделированию формы бровей, работу на полуперманентных красителях, отталкиваясь физиогномики лица.</p>
-                <p>Профессиональный практический опыт преподавателя составляет <b>10 лет.</b></p>
-              </div>
-            </div>
-          </div> -->
           <br/>
           <div class="wow fadeInUp" data-wow-delay="0.2s">
-            <div style="font-family: 'Bad Script', serif; font-size: 25px">
+            <div style="font-family: studioContentFont; font-size: 25px">
               <p style="text-indent: 1.5em;">
                 В нашей студии работает дружная команда специалистов. Подготовка каждого из них находится на высоком уровне.
               </p>
             </div>
           </div>
           <div class="wow fadeInUp" data-wow-delay="0.4s">
-            <div style="font-family: 'Bad Script', serif; font-size: 25px">
+            <div style="font-family: studioContentFont; font-size: 25px">
               <p style="text-indent: 1.5em;">
                 Все они постоянно совершенствуются, и имеют свои индивидуальные подходы к выполнению творческих задач. 
               </p>
             </div>
           </div>
           <div class="wow fadeInUp" data-wow-delay="0.6s">
-            <div style="font-family: 'Bad Script', serif; font-size: 25px">
+            <div style="font-family: studioContentFont; font-size: 25px">
               <p style="text-indent: 1.5em;">
                 Поэтому, любой, даже самый требовательный клиент, встретит в нашей студии перманентного макияжа, своего мастера! 
               </p>
             </div>
           </div>
           <div class="wow fadeInUp" data-wow-delay="0.8s">
-            <div style="font-family: 'Bad Script', serif; font-size: 25px">
+            <div style="font-family: studioContentFont; font-size: 25px">
               <p style="text-indent: 1.5em;">
                 Всех наших профессионалов в команде отличает одно - качество, любовь к работе и уважение к клиентам! Нашим профессионалам не нужно будет объяснять, что необходимо сделать - они сами определят наиболее эффектный вариант для Вас, сделав процедуру на высоком профессионально качественном уровне!
               </p>
@@ -134,8 +304,8 @@
     <section id="permanent" style="background-color: #151515;">
       <div class="container wow fadeInUp">
         <div class="section-header">
-          <h3 class="section-title" style="color: white; font-family: 'Bad Script', cursive;">Перманентный макияж</h3><br/>
-          <p class="section-description" style="font-weight: 500; color: white">Перманентный макияж - современная микродермальная техника, позволяющая подчеркнуть контуры глаз, сделать более чувственными губы и совершенными брови.
+          <h3 class="section-title" style="color: white; font-family: studioTitleFont;">Перманентный макияж</h3><br/>
+          <p class="section-description" style="font-weight: 500; color: white; font-family: studioContentFont; font-size: 20px">Перманентный макияж - современная микродермальная техника, позволяющая подчеркнуть контуры глаз, сделать более чувственными губы и совершенными брови.
 Для достижения безболезненного воздействия, великолепного эстетического результата и для обеспечения биологической безопасности клиентов в Studia Pegas:</p>
         </div>
         
@@ -146,19 +316,19 @@
             <div class="icon-box wow fadeInUp">
               <div class="icon"><img src="img/tick-in-circle.png" /></div>
               <!-- <h4 class="title"><a href="" class="permanent-item-title">Eiusmod Tempor</a></h4> -->
-              <p class="description">Используются гипоаллергенные пигменты, лицензированные средства местной анестезии, иглы и дюзы микроскопического диаметра</p>
+              <p class="description" style="font-family: studioContentFont; font-size: 20px; font-weight: 600">Используются гипоаллергенные пигменты, лицензированные средства местной анестезии, иглы и дюзы микроскопического диаметра</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><img src="img/tick-in-circle.png" /></div>
               <!-- <h4 class="title"><a href="" class="permanent-item-title">Magni Dolores</a></h4> -->
-              <p class="description">Безукоризненно соблюдаются санитарно-гигиенические нормы и требования СанПиН</p>
+              <p class="description" style="font-family: studioContentFont; font-size: 20px; font-weight: 600">Безукоризненно соблюдаются санитарно-гигиенические нормы и требования СанПиН</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><img src="img/tick-in-circle.png" /></div>
               <!-- <h4 class="title"><a href="" class="permanent-item-title">Dolor Sitema</a></h4> -->
-              <p class="description">Выполняется перманентный макияж посредством нескольких техник</p>
+              <p class="description" style="font-family: studioContentFont; font-size: 20px; font-weight: 600">Выполняется перманентный макияж посредством нескольких техник</p>
             </div>
 
           </div>
@@ -169,24 +339,22 @@
 
         <br/>
         <br/>
+        <br/>
+        <br/>
 
         <div class="about-container" align="center">
-          <h3 style="color: white; font-family: 'Bad Script', cursive;">У нас вы найдёте:</h3>
+          <h3 style="color: white; font-family: studioTitleFont; font-size: 35px">У нас вы найдёте:</h3>
           <div style="display: flex; flex-wrap: wrap; justify-content: center;">
             <div class="you-will-find wow fadeInUp" data-wow-delay="0.2s">
-              <div class="item-image"></div>
-              <div class="item-text">Полную конфиденциальность и безупречное исполнение</div>
+              <div class="item-image" style="background: url(img/experiense.png) no-repeat center;"></div>
+              <div class="item-text">Профессионализм и индивидуальный подход</div>
             </div>
             <div class="you-will-find wow fadeInUp" data-wow-delay="0.4s">
-              <div class="item-image"></div>
-              <div class="item-text">Понимание проблемы и профессионализм мастера</div>
-            </div>
-            <div class="you-will-find wow fadeInUp" data-wow-delay="0.6s">
-              <div class="item-image"></div>
+              <div class="item-image" style="background: url(img/medal.png) no-repeat center;"></div>
               <div class="item-text">Компетентные консультации</div>
             </div>
-            <div class="you-will-find wow fadeInUp" data-wow-delay="0.8s">
-              <div class="item-image"></div>
+            <div class="you-will-find wow fadeInUp" data-wow-delay="0.6s">
+              <div class="item-image" style="background: url(img/money.png) no-repeat center;"></div>
               <div class="item-text">Доступные цены для Минска и региона</div>
             </div>  
           </div>
@@ -196,12 +364,13 @@
 
         <br/>
         <br/>
+        <br/>
 
         <div class="about-container" align="center">
-          <h3 style="color: white; font-family: 'Bad Script', cursive;">Предоставляемый спектр услуг:</h3>
+          <h3 style="color: white; font-family: studioTitleFont;">Предоставляемый спектр услуг:</h3>
           <div style="display: flex; flex-wrap: wrap; justify-content: center;">
             <div class="service wow fadeInUp" data-wow-delay="0.2s">
-              <div class="service-title">ПМ бровей</div>
+              <div class="service-title" style="font-family: studioTitleFont;">ПМ бровей</div>
               <div class="item-image"><img src="img/permanent/eyebrow.png" width="120"></div>
               <div class="item-text">
                 <ul class="list-group list-group-flush">
@@ -216,12 +385,17 @@
               </div>
             </div>
             <div class="service wow fadeInUp" data-wow-delay="0.4s">
-              <div class="service-title">ПМ губ</div>
+              <div class="service-title" style="font-family: studioTitleFont;">ПМ губ</div>
               <div class="item-image"><img src="img/permanent/lips.png" width="120"></div>
-              <div class="item-text"></div>
+              <div class="item-text">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="background-color: transparent;
+  border-bottom: 1px solid white;">все виды</li>
+                </ul>
+              </div>
             </div>
             <div class="service wow fadeInUp" data-wow-delay="0.6s">
-              <div class="service-title">ПМ век</div>
+              <div class="service-title" style="font-family: studioTitleFont;">ПМ век</div>
               <div class="item-image"><img src="img/permanent/eyelids.png" width="120"></div>
               <div class="item-text">
                 <ul class="list-group list-group-flush">
@@ -237,22 +411,20 @@
           
         </div>
 
-        <br/>
-        <br/>
-
-        <div class="about-container extra-paragraph" align="center">
-          <p>Дополнительно, Вы всегда можете с легкостью связаться со специалистом и проконсультироваться по наиболее подходящему методу как дистанционно, так и подъехав в студию.</p>
-          <p>Для дистанционной консультации, Вам достаточно прислать фото своих бровей без макияжа (в ВК, Инстаграм, Вайбер).</p>
-          <p>Мы гарантируем прекрасный и длительный эстетический эффект, предельную безболезненность процедуры и минимальный восстановительный период, но оставляем за собой право отказать в проведении процедуры при наличии противопоказаний.</p>
-        </div>
-
-        <br/>
-        <hr>
-        <br/>
+      </div>
+    </section>
 
 
-        <div class="about-container" align="center">
-          <p style="color: white; font-family: 'Lobster', cursive; font-size: 30px">Преимущества перманентного макияжа:</p>
+    <section id="advantages">
+      <div class="container">
+          <div class="section-header wow faseInUp">
+            <p class="section-title" style="color: white; font-family: studioTitleFont;">Преимущества перманентного макияжа</p>
+            <p class="section-description"></p>
+          </div>
+      </div>
+
+      <div class="about-container" align="center">
+          <!-- <p style="color: white; font-family: 'Lobster', cursive; font-size: 30px">Преимущества перманентного макияжа:</p> -->
           <div style="display: flex; flex-wrap: wrap; justify-content: center;">
             <div class="advantage wow fadeInUp" data-wow-delay="0.2s">
               <div class="advantage-title"><span style="font-size: 27px; border: 2px solid white; border-radius: 50%; padding: 0 12px 0 12px">1</span><br>Подарит свободное время</div>
@@ -289,49 +461,46 @@
 
 
         <div class="about-container" align="center">
-          <p style="color: white; font-family: 'Lobster', cursive; font-size: 30px">Последовательность процедуры:</p>
-          <div>
+          <p style="color: black; font-family: studioTitleFont; font-size: 40px">Последовательность процедуры:</p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center;">
             <div class="procedure-item left wow fadeInLeft" data-wow-delay="0.2s">
-              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid white; border-radius: 50%; padding: 0 8px 0 8px">1</span><span style="margin-left: 10px; font-size: 21px">Ознакомление с противопоказаниями и рекомендациями</span></div>
+              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid black; border-radius: 50%; padding: 0 8px 0 8px">1</span><span style="margin-left: 10px; font-size: 21px">Ознакомление с противопоказаниями и рекомендациями</span></div>
               <hr>
-              <div class="item-text" style="color: #F5A9F2; padding: 0 10px 10px 10px">
+              <div class="item-text" style="padding: 0 10px 10px 10px">
                 Запрещено делать процедуру в периоды беременности, лактации, а так же при наличии аллергических реакций, сахарного диабета и т.п.
               </div>
             </div>
             <div class="procedure-item right wow fadeInRight" data-wow-delay="0.6s">
-              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid white; border-radius: 50%; padding: 0 8px 0 8px">2</span><span style="margin-left: 10px; font-size: 21px">Анастезия</span></div>
+              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid black; border-radius: 50%; padding: 0 8px 0 8px">2</span><span style="margin-left: 10px; font-size: 21px">Анастезия</span></div>
               <hr>
-              <div class="item-text" style="color: #F5A9F2; padding: 0 10px 10px 10px">
+              <div class="item-text" style="padding: 0 10px 10px 10px">
                 Мы используем специальный крем для обезболивания, чтобы Вы чувствовали себя комфортно в течении всей процедуры
               </div>
             </div>
             <div class="procedure-item left wow fadeInLeft" data-wow-delay="0.8s">
-              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid white; border-radius: 50%; padding: 0 8px 0 8px">3</span><span style="margin-left: 10px; font-size: 21px">Создаём эскиз</span></div>
+              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid black; border-radius: 50%; padding: 0 8px 0 8px">3</span><span style="margin-left: 10px; font-size: 21px">Создаём эскиз</span></div>
               <hr>
-              <div class="item-text" style="color: #F5A9F2; padding: 0 10px 10px 10px">
+              <div class="item-text" style="padding: 0 10px 10px 10px">
                 Выслушиваем пожелания, даём рекомендации и согласовываем форму и технику Вашего перманентного макияжа
               </div>
             </div>
             <div class="procedure-item right wow fadeInRight" data-wow-delay="1s">
-              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid white; border-radius: 50%; padding: 0 8px 0 8px">4</span><span style="margin-left: 10px; font-size: 21px">Наносим пигмент</span></div>
+              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid black; border-radius: 50%; padding: 0 8px 0 8px">4</span><span style="margin-left: 10px; font-size: 21px">Наносим пигмент</span></div>
               <hr>
-              <div class="item-text" style="color: #F5A9F2; padding: 0 10px 10px 10px">
+              <div class="item-text" style="padding: 0 10px 10px 10px">
                 Время нанесения пигмента зависит от сложности работы, в среднем составляет от 1,5 до 3 часов
               </div>
             </div>
             <div class="procedure-item left wow fadeInLeft" data-wow-delay="1.2s">
-              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid white; border-radius: 50%; padding: 0 8px 0 8px">5</span><span style="margin-left: 10px; font-size: 21px">Оцениваем результат</span></div>
+              <div class="procedure-item-title"><span style="font-size: 21px; border: 2px solid black; border-radius: 50%; padding: 0 8px 0 8px">5</span><span style="margin-left: 10px; font-size: 21px">Оцениваем результат</span></div>
               <hr>
-              <div class="item-text" style="color: #F5A9F2; padding: 0 10px 10px 10px">
+              <div class="item-text" style="padding: 0 10px 10px 10px">
                 При желании, корректируем работу
               </div>
             </div>
           </div>
           
         </div>
-
-
-      </div>
     </section>
 
     
@@ -339,7 +508,7 @@
     <section id="portfolio">
       <div class="container">
         <div class="section-header wow fadeInUp">
-          <h3 class="section-title" style="font-family: 'Lobster', cursive;">Портфолио</h3>
+          <h3 class="section-title" style="font-family: studioTitleFont;">Портфолио</h3>
           <p class="section-description"></p>
         </div>
         
@@ -386,11 +555,17 @@
               <img src="img/zoom.png" class="img-magnifier">
             </div>
           </a>
+          <a href="img/portfolio/pic8.jpg" class="portfolio-pic"> 
+            <img src="img/portfolio/pic8.jpg" class="img-portfolio-pic"> 
+            <div class="middle-magnifier">
+              <img src="img/zoom.png" class="img-magnifier">
+            </div>
+          </a>
         </div>
         
 
       </div>
-    </section><!-- #portfolio -->
+    </section>
 
     
 
@@ -401,87 +576,6 @@
           <p class="section-description"></p>
         </div>
         
-        <!-- <div id="review-gallery" style="display: flex; flex-wrap: wrap; justify-content: center">
-          <div class="review-gallery-row" style="display: flex; display: flex; flex-wrap: wrap; padding: 0 4px">
-            
-            <div id="review-column1" class="review-gallery-column" style="flex: 33%; max-width: 33%; padding: 0 6px">
-              <a href="img/reviews/review1.jpg" class="review-pic"> 
-                <img src="img/reviews/review1.jpg" class="img-review-pic"> 
-                <div class="middle-magnifier">
-                  <img src="img/zoom.png" class="img-magnifier">
-                </div>
-              </a>
-              <a href="img/reviews/review2.jpg" class="review-pic"> 
-                <img src="img/reviews/review2.jpg" class="img-review-pic"> 
-                <div class="middle-magnifier">
-                  <img src="img/zoom.png" class="img-magnifier">
-                </div>
-              </a>
-            </div>
-          
-            <div id="review-column2" class="review-gallery-column" style="flex: 33%; max-width: 33%; padding: 0 6px">
-              <a href="img/reviews/review3.jpg" class="review-pic"> 
-                <img src="img/reviews/review3.jpg" class="img-review-pic"> 
-                <div class="middle-magnifier">
-                  <img src="img/zoom.png" class="img-magnifier">
-                </div>
-              </a>  
-              <a href="img/reviews/review4.jpg" class="review-pic"> 
-                <img src="img/reviews/review4.jpg" class="img-review-pic"> 
-                <div class="middle-magnifier">
-                  <img src="img/zoom.png" class="img-magnifier">
-                </div>
-              </a>
-            </div>
-            
-            <div id="review-column3" class="review-gallery-column" style="flex: 33%; max-width: 33%; padding: 0 6px">
-              <a href="img/reviews/review5.jpg" class="review-pic"> 
-                <img src="img/reviews/review5.jpg" class="img-review-pic"> 
-                <div class="middle-magnifier">
-                  <img src="img/zoom.png" class="img-magnifier">
-                </div>
-              </a> 
-            </div>
-          </div> -->
-
-          <!-- <div class="slider demo" id="slider">
-            <div class="slider_viewport" id="review-gallery">
-              <div class="slider_list">
-                <div class="slider_item">
-                  <div style="width: 100%" align="center">
-                    <img src="img/reviews/review1.jpg" />
-                  </div>
-                </div>
-                <div class="slider_item">
-                  <div style="width: 100%" align="center">
-                    <img src="img/reviews/review2.jpg" />
-                  </div>
-                </div>
-                <div class="slider_item">
-                  <div style="width: 100%" align="center">
-                    <img src="img/reviews/review3.jpg" />
-                  </div>
-                </div>
-                <div class="slider_item">
-                  <div style="width: 100%" align="center">
-                    <img src="img/reviews/review4.jpg" />
-                  </div>
-                </div>
-                <div class="slider_item">
-                  <div style="width: 100%" align="center">
-                    <img src="img/reviews/review5.jpg" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider_nav">
-              <div class="slider_arrow slider_arrow__left">
-              </div>
-              <div class="slider_arrow slider_arrow__right">
-              </div>
-            </div>
-          </div> -->
-
           <div id="slider">
             <div style="padding-right: 5px;"><img src="img/reviews/review1.jpg" height="320"/></div>
             <div style="padding-right: 5px;"><img src="img/reviews/review2.jpg" height="320"/></div>
@@ -493,7 +587,7 @@
 
         </div>
       </div>
-    </section><!-- #review -->
+    </section>
 
     
 
@@ -514,23 +608,23 @@
 
             <div class="info">
               <div>
-                <i class="fa fa-map-marker"></i>
-                <p><a class="location_ref" href="https://vk.com/studiapegas?w=address-30431325_4905" target="_blank">Минск, ул. Амураторская 4 - 101</a><br>Рядом ст.м. Молодёжная и ст.м. Фрунзенская</p>
+                <i class="fa fa-map-marker" style="color: black"></i>
+                <p style="font-weight: 600"><a class="location_ref" href="https://vk.com/studiapegas?w=address-30431325_4905" target="_blank">Минск, ул. Амураторская 4 - 101</a><br>Рядом ст.м. Молодёжная и ст.м. Фрунзенская</p>
               </div>
 
               <div>
-                <i class="fa fa-instagram"></i>
-                <p>Instagram: <a class="instagram_ref" href="https://www.instagram.com/studia_pegas/" target="_blank">@studia_pegas</a></p>
+                <i class="fa fa-instagram" style="color: black"></i>
+                <p style="font-weight: 600">Instagram: <a class="instagram_ref" href="https://www.instagram.com/studia_pegas/" target="_blank">@studia_pegas</a></p>
               </div>
 
               <div>
-                <i class="fa fa-vk"></i>
-                <p>VK: <a class="vk_ref" href="https://vk.com/studiapegas" target="_blank">vk.com/studiapegas</a></p>
+                <i class="fa fa-vk" style="color: black"></i>
+                <p style="font-weight: 600">VK: <a class="vk_ref" href="https://vk.com/studiapegas" target="_blank">vk.com/studiapegas</a></p>
               </div>
               
               <div>
-                <i class="fa fa-phone"></i>
-                <p>
+                <i class="fa fa-phone" style="color: black"></i>
+                <p style="font-weight: 600">
                   (+375-29) 835-99-39<br>
                   (+375-44) 579-99-39<br>
                   (+375-33) 686-74-96
@@ -552,50 +646,49 @@
             <div class="form">
               <form action="" method="post" id="request-form">
                 <div>  
-                  <label for="name" style="text-align: center; font-family: 'Lobster', serif; font-size: 20px">Имя:</label>
-                  <input id="client-name" type="text" class="form-control" style="border-radius: 5px" name="name">
-		  <div class="empty-field-warn">
+                  <label for="name" style="text-align: center; font-family: 'Lobster', serif; font-size: 20px; color: black">Имя:</label>
+                  <input id="client-name" type="text" class="form-control" style="height: 40px; border-radius: 9px; border-color: #DF0174" name="name">
+      <div class="empty-field-warn">
                     <div style="font-family: 'Lobster'; color: #FA58AC">Введите, пожалуйста, своё имя</div>
                   </div>
                 </div>
                 <div>
-                  <label for="email" style="font-family: 'Lobster', serif; font-size: 20px">E-mail:</label>
-                  <input id="client-email" type="email" class="form-control" style="border-radius: 5px" name="email">
-		  <div class="empty-field-warn">
-                    <div style="font-family: 'Lobster'; color: #FA58AC">Введите, пожалуйста, свой e-mail</div>
+                  <label for="email" style="font-family: 'Lobster', serif; font-size: 20px; color: black">E-mail:</label>
+                  <input id="client-email" type="email" class="form-control" style="height: 40px; border-radius: 9px; border-color: #DF0174" name="email">
+      <div class="empty-field-warn">
+                    <div style="font-family: 'Lobster'; color: #FA58AC;">Введите, пожалуйста, свой e-mail</div>
                   </div>
                 </div>
-		<br>
-		<div align="center">
-                	<input id="client-submit" type="submit" class="btn btn-success" style="border-radius: 3px; color: white; font-size: 20px;" value="Оставить заявку">
-		</div>
+    <br>
+    <div align="center">
+                  <input id="client-submit" type="submit" class="pulse" style="width: 42vmin; height: 12vmin; font-size: 4vmin" value="Оставить заявку">
+    </div>
               </form>
             </div>
           </div>
 
-	  <!-- Modal -->
-	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
-	    <div class="vertical-alignment-helper">
-		<div class="modal-dialog vertical-align-center">
-		    <div class="modal-content" align="center" style="background-color: #E6E6E6">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
+      <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+        <div class="modal-content" align="center" style="background-color: #E6E6E6">
 <div style="width: 70px; height: 70px; background-color: black; border-radius: 50%; margin-top: 15px;">
 <img src="img/logo_min.png" alt="" title="" height="60" style="margin-top: 5px">
-</div>		        
+</div>            
 <div id="modal-message" class="modal-body" align="center" style="font-family: 'Bad Script', serif; font-size: 30px; font-weight: 500"></div>
 <button data-dismiss="modal" class="btn btn btn-outline-success" style="font-family: 'Bad Script'; font-size: 20px; width: 90px; height: 40px; margin-bottom: 15px; text-align:center; ">OK</button>
-		    </div>
-		</div>
-	    </div>
-	</div>
+        </div>
+    </div>
+      </div>
+  </div>
 
       </div>
-    </section><!-- #contact -->
+    </section>
 
   </main>
 
-  <!--==========================
-    Footer
-  ============================-->
+
+
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -628,38 +721,36 @@
   <script src="lib/superfish/superfish.min.js"></script>
   <script src="lib/scrollreveal/scrollreveal.min.js"></script>
   <script src="lib/slider/js/slider.js"></script>
-
-  <script type="text/javascript" src="lib/slick/slick.min.js"></script>
-
-
+  <script src="lib/slick/slick.min.js"></script>
   <script src="lib/lightgallery/js/lightgallery.min.js"></script>
   <script src="lib/lg-thumbnail/lg-thumbnail.min.js"></script>
+  <script src="lib/jquery-lazy/jquery.lazy.min.js"></script>
+  <script src="lib/plyr/js/plyr.polyfilled.js"></script>
 
   <script src="js/main.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function() {
-    
+
+      const player = new Plyr('#player');
+
+      // Bind event listener
+      function on(selector, type, callback) {
+        document.querySelector(selector).addEventListener(type, callback, false);
+      }
+
+
+      $('#back').animate({opacity: 0}, 0).css({'background-image': 'url(img/main/back.jpg)', 'background-size': 'cover', 'background-position': 'top', 'background-attachment': 'fixed'}).animate({opacity: 1}, 10000);
+
       window.sr = ScrollReveal({ reset: true });
       sr.reveal('.portfolio-pic', { duration: 400 });
       sr.reveal('.review-pic', { duration: 1000 }, 50);
 
+      sr.reveal('.plyr-main-container', { duration: 2000});
+
 
       lightGallery(document.getElementById('portfolio-gallery'));
       
-      // $('#slider').skySlider({
-      //   carousel: true,
-      //   interval: 4000,
-      //   duration: 1000,
-      //   items: 3,
-      //   carousel: true,
-      //   loop: true,
-      //   autoplay: true,
-      //   callback: function(number) {
-      //     //console.log('Current slideSet - ' + number);
-      //   }
-      // });
-
       $('#slider').slick({
         // dots: true,
         prevArrow: false,
@@ -674,36 +765,17 @@
               slidesToShow: 1,
               slidesToScroll: 1,
               pauseOnHover: true
-
-
-        // responsive: [
-        //   {
-        //     breakpoint: 1200,
-        //     settings: {
-        //       slidesToShow: 2,
-        //       slidesToScroll: 1
-        //     }
-        //   },
-        //   {
-        //     breakpoint: 768,
-        //     settings: {
-        //       slidesToShow: 1,
-        //       slidesToScroll: 1
-        //     }
-        //   }
-        // ]
       });
 
       
 
       $('.empty-field-warn').css('visibility', 'hidden');
       $('#request-form').find('input').keyup(function() {
-        	if( $.trim( $(this).val() ) == '' ) {
-        	  //$(this).next().css('visibility', 'visible');
+          if( $.trim( $(this).val() ) == '' ) {
           }
           else {
-        	  $(this).next().css('visibility', 'hidden');	
-        	}
+            $(this).next().css('visibility', 'hidden'); 
+          }
       });
 
       $('#request-form').submit(function(){
@@ -733,11 +805,11 @@
                 $('#request-form').find('input:not(#client-submit), textarea').val('');
                 $('#client-submit').next().empty();
                 $('#modal-message').text('Ваша заявка принята!');
-  	      $("#myModal").modal('show');
+          $("#myModal").modal('show');
               }else{
                 $('#client-submit').next().empty();
-         	      $('#modal-message').text('Ошибка при отправлении заявки. Попробуйте ещё раз.');
-  	      $("#myModal").modal('show');
+                $('#modal-message').text('Ошибка при отправлении заявки. Попробуйте ещё раз.');
+          $("#myModal").modal('show');
               }
             },
             error: function(){

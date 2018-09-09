@@ -1,13 +1,10 @@
-<?php
+<?php  include 'creds.php';
 #error_reporting(E_ALL);
 #ini_set("display_errors", 1);
 
 require 'phpmailer/PHPMailerAutoload.php';
 
 if (!empty($_POST['name'])) {
-    $login = 'biv2994@mail.ru';
-    $password = 'm777onopoly';
-    
     $fromName = 'Студия «Пегас»';
     $subject = "Заявка от клиента";
 
@@ -33,7 +30,7 @@ if (!empty($_POST['name'])) {
     $mail->isHTML(true);
 
     $mail->Subject = "Заявка от клиента";
-    $mail->Body = "Клиент $clientName оставил(a) заявку.<br> E-mail: <a href=\"mailto:$clientEmail\">$clientEmail</a>";
+    $mail->Body = "Клиент $clientName оставил(a) заявку.<br> E-mail: <a href=\"mailto:$clientMail\">$clientEmail</a>";
     $mail->AltBody = "Клиент $clientName оставил(a) заявку.\r\n E-mail: $clientEmail";
 
     if ($mail->send()) {
